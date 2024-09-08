@@ -15,7 +15,7 @@
     "moduleResolution": "node",
     "resolveJsonModule": true,
     "isolatedModules": true,
-    "jsx": "react-jsx", // "jsx": "preserve",
+    "jsx": "preserve", // "jsx": "preserve", "react-jsx" --> Es la configuración correcta para que levante el proyecto y corran los tests
     "incremental": true,
     "target": "ESNext",
     "types": [
