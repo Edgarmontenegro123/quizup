@@ -10,7 +10,6 @@ const config: Config = {
     },
     transform: {
         '^.+\\.(js|jsx|ts|tsx)$': 'ts-jest',
-        '^.+\\.(js|jsx)$': 'babel-jest',
     },
     testMatch: ["**/src/__tests__/**/*.test.[jt]s?(x)"],
 };
