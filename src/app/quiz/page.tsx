@@ -1,19 +1,6 @@
-import {shuffleArray} from "@/utils/arrayUtils";
-import {Difficulty, Question, QuestionsState} from "@/types/types";
-import QuizComponent from "./quizComponent"
-
-const TOTAL_QUESTIONS = 5;
-
-const getQuestions = async (amount: number, difficulty: Difficulty, category: number): Promise<QuestionsState> => {
-    const endpoint = `https://opentdb.com/api.php?amount=${amount}&category=${category}&difficulty=${difficulty}&type=multiple`;
-    console.log('*** endpoint: ', endpoint)
-    const data : {results: Array<Question>} = await (await fetch(endpoint, {cache: "no-store"})).json();
-
-    return data.results.map(question => ({
-        ...question,
-        answers: shuffleArray([...question.incorrect_answers, question.correct_answer])
-    }))
-}
+import QuizComponent from "./quizComponent";
+import {getQuestions, TOTAL_QUESTIONS} from "@/utils/fetchQuestions";
+import {Difficulty} from "@/types/types";
 
 const QuizPage = async ({ searchParams }: { searchParams: { difficulty: string, category: number } }) => {
     const difficulty = searchParams.difficulty as Difficulty;
@@ -24,5 +11,4 @@ const QuizPage = async ({ searchParams }: { searchParams: { difficulty: string, 
     return <QuizComponent questions={questions} totalQuestions={TOTAL_QUESTIONS} />
 }
 
-export default QuizPage
-
+export default QuizPage;

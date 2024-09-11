@@ -16,6 +16,5 @@ const QuizComponent = ({questions, totalQuestions} : quizComponentProps) => {
     )
 }
 
-
 export default QuizComponent
 
