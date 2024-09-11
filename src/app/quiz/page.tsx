@@ -4,8 +4,8 @@ import QuizComponent from "./quizComponent"
 
 const TOTAL_QUESTIONS = 5;
 
-const getQuestions = async (amount: number, difficulty: Difficulty): Promise<QuestionsState> => {
-    const endpoint = `https://opentdb.com/api.php?amount=${amount}&difficulty=${difficulty}&type=multiple`;
+const getQuestions = async (amount: number, difficulty: Difficulty, category: number): Promise<QuestionsState> => {
+    const endpoint = `https://opentdb.com/api.php?amount=${amount}&category=${category}&difficulty=${difficulty}&type=multiple`;
     console.log('*** endpoint: ', endpoint)
     const data : {results: Array<Question>} = await (await fetch(endpoint, {cache: "no-store"})).json();
 
@@ -15,9 +15,11 @@ const getQuestions = async (amount: number, difficulty: Difficulty): Promise<Que
     }))
 }
 
-const QuizPage = async ({ searchParams }: { searchParams: { difficulty: string } }) => {
+const QuizPage = async ({ searchParams }: { searchParams: { difficulty: string, category: number } }) => {
     const difficulty = searchParams.difficulty as Difficulty;
-    const questions = await getQuestions(TOTAL_QUESTIONS, difficulty as Difficulty)
+    const category = searchParams.category;
+    const questions = await getQuestions(TOTAL_QUESTIONS, difficulty as Difficulty, category)
+    console.log("Questions:", questions);
 
     return <QuizComponent questions={questions} totalQuestions={TOTAL_QUESTIONS} />
 }
