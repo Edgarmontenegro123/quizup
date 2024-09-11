@@ -83,7 +83,7 @@ export default function Home() {
                   <p className="text font-bold">Difícil</p>
               </div>
           </div>
-          <Button text={"Comenzar!"} onClick={handleButtonClick}/>
+          <Button text={"Jugar!"} onClick={handleButtonClick}/>
       </div>
   );
 }
