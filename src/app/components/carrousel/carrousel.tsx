@@ -13,6 +13,16 @@ interface CarrouselProps {
 }
 export default function Carrousel({categories, onCategorySelect} : CarrouselProps) {
     const shouldLoop = categories.length > 1;
+
+    const handleSlideChange = (swiper: any) => {
+        const currentIndex = swiper.activeIndex % categories.length;
+        const currentCategory = categories[currentIndex];
+
+        if(currentCategory) {
+            onCategorySelect(currentCategory.id)
+        }
+    }
+
     return (
         <>
             <Swiper
@@ -21,6 +31,7 @@ export default function Carrousel({categories, onCategorySelect} : CarrouselProp
                 modules={[EffectCards, Navigation]}
                 loop={shouldLoop}
                 navigation={true}
+                onSlideChange={handleSlideChange}
                 className="mySwiper"
                 >
                 {
