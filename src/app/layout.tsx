@@ -21,7 +21,9 @@ export default function RootLayout({
             <Image src={Logo} alt="logo"
                    className="h-[200px] sm:h-full"
                    width={200}
-                   height={200} />
+                   height={200}
+                   priority
+            />
             {children}
         </main>
       </body>
