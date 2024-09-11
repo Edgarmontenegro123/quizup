@@ -30,12 +30,10 @@ export default function Home() {
 
     const handleCategoryClick = (categoryId: number) => {
         setSelectedCategory(categoryId);
-        console.log("Categoría seleccionada: ", categoryId)
     };
 
     const handleClickDifficult = (difficult: Difficulty) => {
         setDifficult(difficult)
-        console.log("Nivel seleccionado: ", difficult)
     }
     const handleButtonClick = () => {
         if(difficult && selectedCategory) {
