@@ -10,9 +10,10 @@ import FinalScore from "@/app/components/finalScore/finalScore";
 type Props = {
     questions: QuestionsState;
     totalQuestions: number;
+    onRestart: () => void;
 }
 
-const Quiz = ({questions, totalQuestions}: Props) => {
+const Quiz = ({questions, totalQuestions, onRestart}: Props) => {
     const router = useRouter();
     const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
     const [score, setScore] = useState(0);
@@ -43,10 +44,15 @@ const Quiz = ({questions, totalQuestions}: Props) => {
     }
 
     const handleRestart = () => {
+        onRestart();
         setCurrentQuestionIndex(0);
         setUserAnswers({});
         setScore(0);
         setShowFinalScreen(false);
+    }
+
+    if (!questions[currentQuestionIndex]) {
+        return <p>Error: No se pudo cargar la pregunta.</p>;
     }
 
     if(showFinalScreen) {
