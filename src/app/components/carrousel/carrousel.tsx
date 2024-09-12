@@ -4,6 +4,7 @@ import {EffectCards, Navigation} from "swiper/modules";
 import "swiper/css";
 import "swiper/css/effect-cards";
 import "swiper/css/navigation";
+import {Swiper as SwiperType} from "swiper/types";
 import {colors} from "@/utils/colors";
 import "./styles.css";
 
@@ -14,7 +15,7 @@ interface CarrouselProps {
 export default function Carrousel({categories, onCategorySelect} : CarrouselProps) {
     const shouldLoop = categories.length > 1;
 
-    const handleSlideChange = (swiper: any) => {
+    const handleSlideChange = (swiper: SwiperType) => {
         const currentIndex = swiper.activeIndex % categories.length;
         const currentCategory = categories[currentIndex];
 

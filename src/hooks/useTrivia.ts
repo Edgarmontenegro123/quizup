@@ -1,4 +1,4 @@
-import {useState, useEffect} from "react";
+import {useState, useEffect, useCallback} from "react";
 import {getQuestions, TOTAL_QUESTIONS} from "@/utils/fetchQuestions";
 import {Difficulty, QuestionsState} from "@/types/types";
 
@@ -12,7 +12,7 @@ const useTrivia = ({difficulty, category} : UseTriviaProps) => {
     const [loading, setLoading] = useState<boolean>(true);
     const [error, setError] = useState<string | null>(null);
 
-    const fetchTriviaQuestions = async () => {
+    const fetchTriviaQuestions = useCallback(async () => {
         setLoading(true);
         setError(null);
 
@@ -24,12 +24,12 @@ const useTrivia = ({difficulty, category} : UseTriviaProps) => {
         } finally {
             setLoading(false);
         }
-    }
+    }, [difficulty, category]);
 
     // Effect to upload questions while component is being assembled
     useEffect(() => {
         fetchTriviaQuestions();
-    }, [difficulty, category]);
+    }, [fetchTriviaQuestions]);
 
     return {
         questions,
