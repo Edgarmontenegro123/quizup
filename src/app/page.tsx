@@ -25,7 +25,7 @@ export default function Home() {
                 console.log("Error fetching categories:", error)
             }
         }
-        fetchCategories();
+        fetchCategories().catch(err => console.error(err));
     }, [])
 
     const handleCategoryClick = (categoryId: number) => {

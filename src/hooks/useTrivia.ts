@@ -28,7 +28,7 @@ const useTrivia = ({difficulty, category} : UseTriviaProps) => {
 
     // Effect to upload questions while component is being assembled
     useEffect(() => {
-        fetchTriviaQuestions();
+        fetchTriviaQuestions().catch(err => console.error(err));
     }, [fetchTriviaQuestions]);
 
     return {
