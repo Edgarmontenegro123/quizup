@@ -6,19 +6,18 @@ const config: Config = {
     testEnvironment: 'jsdom',
     moduleNameMapper: {
         '^@/(.*)$': '<rootDir>/src/$1',
-        '\\.(css|scss)$': 'identity-obj-proxy'
+        '\\.(css|scss)$': 'identity-obj-proxy',
     },
     transform: {
-        '^.+\\.(js|jsx|ts|tsx)$': 'ts-jest',
+        '^.+\\.(js|jsx|ts|tsx)$': ['ts-jest', { tsconfig: 'tsconfig.test.json' }],
         '^.+\\.(js|jsx)$': 'babel-jest',
     },
-    globals: {
-        'ts-jest': {
-            tsconfig: 'tsconfig.test.json' // Apunta al archivo tsconfig de test que creaste
-        }
-    },
+    transformIgnorePatterns: [
+        'node_modules/(?!(swiper|ssr-window|dom7)/)',
+    ],
     moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx', 'json', 'node'],
-    testMatch: ["**/src/__tests__/**/*.test.[jt]s?(x)"],
+    testMatch: ["**/src/**/*.test.[jt]s?(x)"],
 };
 
 export default config;
+
