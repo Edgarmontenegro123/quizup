@@ -1,6 +1,6 @@
 import React from "react";
 import type { Metadata } from "next";
-import Image from "next/Image"
+import Image from "next/image"
 import Logo from "../app/public/images/quiz-up-logo.png"
 import "./globals.css";
 

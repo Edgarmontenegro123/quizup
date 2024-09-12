@@ -4,7 +4,7 @@ import {useState, useEffect} from "react";
 import {useRouter} from "next/navigation";
 import {Difficulty} from "@/types/types";
 import Brain from "../app/public/images/brain.png"
-import Image from "next/Image";
+import Image from "next/image";
 import Carrousel from "@/app/components/carrousel/carrousel";
 import Button from "@/app/components/button/button";
 import "./globals.css";
