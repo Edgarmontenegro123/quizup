@@ -4,6 +4,10 @@ import {getBGColor} from "./helpers";
 
 const mockOnClick = jest.fn();
 
+// Mocking function getBGColor
+jest.mock('./helpers', () => ({
+    getBGColor: jest.fn(),
+}));
 describe("QuestionCard component", () => {
     const defaultProps = {
         currentQuestionIndex: 0,
@@ -41,7 +45,7 @@ describe("QuestionCard component", () => {
     // 3. Test dynamic styles
     test("applies the correct class based on userAnswer and correctAnswer", () => {
         // Mock getBGColor function
-        jest.spyOn(require("@/app/components/questionCard/helpers"), "getBGColor").mockReturnValue("bg-green-500");
+        (getBGColor as jest.Mock).mockReturnValue("bg-green-500");
 
         render(<QuestionCard {...defaultProps} userAnswer="París" />);
 
