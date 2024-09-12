@@ -57,3 +57,10 @@ Responde las preguntas y obtén tu puntaje final.
 
 ## Deploy on Vercel
 https://quizup-by-montenegro.vercel.app/
+
+
+<img alt="Start" src = './public/startApplication.png' height = '300px' width="200">
+
+<img alt="questions" src = './public/questions.png' height = '300px' width="200">
+
+<img alt="finish" src = './public/finish.png' height = '300px' width="500">
